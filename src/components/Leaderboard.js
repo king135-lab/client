@@ -9,7 +9,7 @@ const Leaderboard = () => {
 
     const fetchLeaderboard = async () => {
         try {
-            const res = await axios.get('http://localhost:5000/api/users/leaderboard', {
+            const res = await axios.get('https://server-obl1.onrender.com/api/users/leaderboard', {
                 params: { t: Date.now() },
                 headers: { 'Cache-Control': 'no-cache' }
             });

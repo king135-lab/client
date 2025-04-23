@@ -19,7 +19,7 @@ const GamePageJoiner = () => {
     useEffect(() => {
         const interval = setInterval(async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/api/games/${gameId}`);
+                const res = await axios.get(`https://server-obl1.onrender.com/api/games/${gameId}`);
                 setGameData(res.data);
                 setTurnTrigger(res.data.turn);
             } catch (err) {
@@ -45,7 +45,7 @@ const GamePageJoiner = () => {
             return;
         }
         try {
-            const res = await axios.post('http://localhost:5000/api/games/guess', { gameId, player: playerName, guess });
+            const res = await axios.post('https://server-obl1.onrender.com/api/games/guess', { gameId, player: playerName, guess });
             setGuessMessage(res.data.message);
             setGuess('');
         } catch (err) {
@@ -58,7 +58,7 @@ const GamePageJoiner = () => {
         const confirmation = window.confirm('Are you sure you want to end the game? You will be counted as the loser.');
         if (confirmation) {
             try {
-                await axios.post('http://localhost:5000/api/games/quitGame', { gameId, player: playerName });
+                await axios.post('https://server-obl1.onrender.com/api/games/quitGame', { gameId, player: playerName });
                 setGameEnded(true);
             } catch (err) {
                 console.error('Error ending the game:', err);
@@ -79,7 +79,7 @@ const GamePageJoiner = () => {
 
     const handleResetGame = async () => {
         try {
-            await axios.post('http://localhost:5000/api/games/reset', { gameId });
+            await axios.post('https://server-obl1.onrender.com/api/games/reset', { gameId });
             navigate('/');
         } catch (err) {
             console.error('Error resetting game:', err);

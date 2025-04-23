@@ -39,7 +39,7 @@ const Signup = () => {
         }
 
         try {
-            const res = await axios.post('http://localhost:5000/api/auth/signup', formData);
+            const res = await axios.post('https://server-obl1.onrender.com/api/auth/signup', formData);
             localStorage.setItem('token', res.data.token);
             localStorage.setItem('user', JSON.stringify(res.data.user));
             navigate('/');

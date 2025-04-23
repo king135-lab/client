@@ -25,7 +25,7 @@ const JoinGame = () => {
         }
         setIsJoining(true);
         try {
-            const response = await axios.post('http://localhost:5000/api/games/join', { gameId, playerName });
+            const response = await axios.post('https://server-obl1.onrender.com/api/games/join', { gameId, playerName });
             const game = response.data.game;
             setMessage(response.data.message);
             if (game.players.length === 2 && game.status === 'waitingForSecret') {

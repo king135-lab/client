@@ -30,7 +30,7 @@ const SecretCodePage = () => {
 
         setIsSubmitting(true);
         try {
-            const response = await axios.post('http://localhost:5000/api/games/setsecret', {
+            const response = await axios.post('https://server-obl1.onrender.com/api/games/setsecret', {
                 gameId,
                 playerName,
                 secretCode
@@ -72,7 +72,7 @@ const SecretCodePage = () => {
     useEffect(() => {
         const interval = setInterval(async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/api/games/${gameId}`);
+                const res = await axios.get(`https://server-obl1.onrender.com/api/games/${gameId}`);
                 const game = res.data;
                 if (game.status === 'in-progress') {
                     navigate(`/game/${game.players[0] === playerName ? 'c' : 'j'}/${gameId}`);

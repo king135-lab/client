@@ -24,7 +24,7 @@ const CreateGame = () => {
     const handleCreateGame = async () => {
         setIsCreating(true);
         try {
-            const response = await axios.post('http://localhost:5000/api/games', { playerName });
+            const response = await axios.post('https://server-obl1.onrender.com/api/games', { playerName });
             setGameId(response.data.gameId);
             setMessage(response.data.message);
         } catch (err) {
@@ -111,7 +111,7 @@ const PlayerJoinPoll = ({ gameId, playerName, navigate }) => {
 
         const interval = setInterval(async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/games/${gameId}`);
+                const response = await axios.get(`https://server-obl1.onrender.com/api/games/${gameId}`);
                 const game = response.data;
                 if (game.players.length === 2 && game.status === 'waitingForSecret') {
                     navigate(`/${playerName}/setsecretcode/${gameId}`);
