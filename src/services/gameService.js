@@ -1,7 +1,7 @@
 import socketIOClient from "socket.io-client";
 
 // Create a WebSocket connection to the backend
-const socket = socketIOClient("http://localhost:3001"); // Adjust URL if necessary
+const socket = socketIOClient("https://server-obl1.onrender.com"); // Adjust URL if necessary
 
 // Send a guess to the backend
 export function sendGuess(guess) {
