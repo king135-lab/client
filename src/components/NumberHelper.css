@@ -1,28 +1,30 @@
-/* src/components/NumberHelper.css */
 .number-helper-container {
-    margin-top: 2rem;
-    padding: 0.5rem;
+    margin-top: 1.5rem;
+    padding: 0.75rem;
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid #00f3ff33;
     border-radius: 8px;
+    overflow-x: hidden;
 }
 
 .helper-title {
     color: #00f3ff;
     font-family: 'Orbitron', sans-serif;
     margin-bottom: 0.5rem;
+    font-size: 1.4rem;
 }
 
 .helper-subtitle {
     color: #888;
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
 }
 
 .number-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 65px;
+    gap: 1rem;
+    width: 100%;
 }
 
 .number-btn {
@@ -31,10 +33,13 @@
     border: 2px solid #00f3ff;
     background: rgba(0, 243, 255, 0.05);
     color: #00f3ff;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .number-btn:hover {
@@ -70,7 +75,7 @@
     }
 }
 
-/* Adding diagonal line style */
+/* Diagonal Line Style */
 .cross-line {
     position: absolute;
     width: 100%;
@@ -88,12 +93,81 @@
     transform: translateY(-50%) rotate(-45deg);
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
+    .number-helper-container {
+        padding: 0.5rem;
+        margin-top: 1rem;
+    }
+
+    .helper-title {
+        font-size: 1.2rem;
+    }
+
+    .helper-subtitle {
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+    }
+
     .number-grid {
         grid-template-columns: repeat(5, 1fr);
+        gap: 0.75rem;
     }
 
     .number-btn {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+        border-width: 1.5px;
     }
+
+    .elimination-effect {
+        height: 1.5px;
+    }
+
+    .cross-line::before {
+        height: 1px;
+    }
+}
+
+@media (max-width: 480px) {
+    .number-helper-container {
+        padding: 0.4rem;
+        margin-top: 0.75rem;
+    }
+
+    .helper-title {
+        font-size: 1.1rem;
+    }
+
+    .helper-subtitle {
+        font-size: 0.75rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .number-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 0.5rem;
+    }
+
+    .number-btn {
+        font-size: 0.9rem;
+        border-width: 1px;
+    }
+
+    .elimination-effect {
+        height: 1px;
+        width: 70%;
+    }
+
+    .cross-line::before {
+        height: 0.8px;
+    }
+}
+
+/* Ensure no horizontal overflow */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    width: 100%;
 }
