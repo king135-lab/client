@@ -1,7 +1,9 @@
+// src/components/Signup.js
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
-import './Auth.css'; // Ensure this file contains the necessary styles
+import WaitingForVerification from './WaitingForVerification';
+import './Auth.css';
 
 const Signup = () => {
     const navigate = useNavigate();
@@ -11,6 +13,7 @@ const Signup = () => {
         password: ''
     });
     const [error, setError] = useState('');
+    const [waitingVerification, setWaitingVerification] = useState(false);
 
     const handleChange = (e) => {
         setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -39,15 +42,17 @@ const Signup = () => {
         }
 
         try {
-            const res = await axios.post('https://server-obl1.onrender.com/api/auth/signup', formData);
-            localStorage.setItem('token', res.data.token);
-            localStorage.setItem('user', JSON.stringify(res.data.user));
-            navigate('/');
+            await axios.post('https://server-obl1.onrender.com/api/auth/signup', formData);
+            setWaitingVerification(true);
         } catch (err) {
             console.error(err);
             setError(err.response?.data?.message || 'Signup failed');
         }
     };
+
+    if (waitingVerification) {
+        return <WaitingForVerification email={formData.email} />;
+    }
 
     return (
         <div className="auth-container">

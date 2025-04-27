@@ -2,21 +2,20 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
+import WaitingForVerification from './WaitingForVerification';
 import './Auth.css';
 
 const Login = () => {
     const navigate = useNavigate();
-    const [formData, setFormData] = useState({
-        email: '',
-        password: ''
-    });
+    const [formData, setFormData] = useState({ email: '', password: '' });
     const [error, setError] = useState('');
+    const [needsVerification, setNeedsVerification] = useState(false);
 
-    const handleChange = (e) => {
+    const handleChange = e => {
         setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async e => {
         e.preventDefault();
         setError('');
         try {
@@ -25,10 +24,18 @@ const Login = () => {
             localStorage.setItem('user', JSON.stringify(res.data.user));
             navigate('/');
         } catch (err) {
-            console.error(err);
-            setError(err.response?.data?.message || 'Login failed');
+            const msg = err.response?.data?.message || 'Login failed';
+            if (msg.toLowerCase().includes('verify')) {
+                setNeedsVerification(true);
+            } else {
+                setError(msg);
+            }
         }
     };
+
+    if (needsVerification) {
+        return <WaitingForVerification email={formData.email} />;
+    }
 
     return (
         <div className="auth-container">
@@ -53,6 +60,9 @@ const Login = () => {
                 />
                 <button type="submit">Log In</button>
             </form>
+            <p className="small-link">
+                <Link to="/request-password-reset">Forgot password?</Link>
+            </p>
             <p>
                 Don't have an account? <Link to="/signup">Sign Up</Link>
             </p>
