@@ -13,6 +13,11 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import AboutPage from './components/AboutPage';
 import HowToPlay from './components/HowToPlay';
+import WaitingForVerification from './components/WaitingForVerification';
+import RequestPasswordReset from './components/RequestPasswordReset';
+import ResetPassword from './components/ResetPassword';
+import Terms from './components/TermsOfService'
+import Privacy from './components/PrivacyPolicy'
 
 const App = () => {
     return (
@@ -29,6 +34,12 @@ const App = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/how-to-play" element={<HowToPlay />} />
+                <Route path="/verify-wait" element={<WaitingForVerification />} />
+                <Route path="/request-password-reset" element={<RequestPasswordReset />} />
+                <Route path="/reset-password/:token" element={<ResetPassword />} />
+                <Route path="/Terms" element={<Terms />} />
+                <Route path="/Privacy" element={<Privacy />} />
+
             </Routes>
         </Router>
     );
