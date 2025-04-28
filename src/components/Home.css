@@ -238,12 +238,12 @@
 
 /* Logout Button */
 .logout-btn {
+    width: 100px;
     padding: 0.5rem 1rem;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     border-radius: 4px;
-    background: #ff4d4d;
-    color: #ffffff;
-    border: none;
+    transition: all 0.3s ease;
+    text-align: center;
 }
 
 .logout-btn:hover {
