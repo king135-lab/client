@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Auth.css';
+import { Link } from 'react-router-dom';
+
 
 const WaitingForVerification = ({ email }) => {
     const [message, setMessage] = useState('');
@@ -25,6 +27,9 @@ const WaitingForVerification = ({ email }) => {
             {message && <p className="success-msg">{message}</p>}
             {error && <p className="error-msg">{error}</p>}
             <button onClick={handleResend}>Resend Verification Email</button>
+            <p>
+                Account Verified? Go to <Link to="/">Home</Link>
+            </p>
         </div>
 
     );
