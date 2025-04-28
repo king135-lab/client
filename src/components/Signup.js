@@ -42,7 +42,7 @@ const Signup = () => {
         }
 
         try {
-            await axios.post('https://np-game.vercel.app/api/auth/signup', formData);
+            await axios.post('https://server-obl1.onrender.com/api/auth/signup', formData);
             setWaitingVerification(true);
         } catch (err) {
             console.error(err);
