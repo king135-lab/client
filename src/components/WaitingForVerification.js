@@ -25,8 +25,6 @@ const WaitingForVerification = ({ email }) => {
             {message && <p className="success-msg">{message}</p>}
             {error && <p className="error-msg">{error}</p>}
             <button onClick={handleResend}>Resend Verification Email</button>
-
-            <br />
             <p>
                 Account Verified? Go to <Link to="/">Home</Link>
             </p>
