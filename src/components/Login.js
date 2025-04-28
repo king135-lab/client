@@ -60,9 +60,6 @@ const Login = () => {
                 />
                 <button type="submit">Log In</button>
             </form>
-            <p className="small-link">
-                <Link to="/request-password-reset">Forgot password?</Link>
-            </p>
             <p>
                 Don't have an account? <Link to="/signup">Sign Up</Link>
             </p>
