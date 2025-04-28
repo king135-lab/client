@@ -16,7 +16,7 @@ const ResetPassword = () => {
         setMessage('');
         setError('');
         try {
-            const res = await axios.post(`https://np-game.vercel.app/api/auth/reset-password/${token}`, { password });
+            const res = await axios.post(`https://server-obl1.onrender.com/api/auth/reset-password/${token}`, { password });
             setMessage(res.data.message);
             setTimeout(() => navigate('/login'), 2000);
         } catch (err) {
