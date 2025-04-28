@@ -14,7 +14,7 @@ const RequestPasswordReset = () => {
         setMessage('');
         setError('');
         try {
-            const res = await axios.post('https://server-obl1.onrender.com/auth/request-password-reset', { email });
+            const res = await axios.post('https://np-game.vercel.app/api/auth/request-password-reset', { email });
             setMessage(res.data.message);
         } catch (err) {
             setError(err.response?.data?.message || 'Failed to send reset email');
