@@ -23,7 +23,7 @@ const WaitingForVerification = ({ email }) => {
     return (
         <div className="auth-container">
             <h2>Email Verification Required</h2>
-            <p>Please check your email for a verification link. <b>(Haven't got the link check your spam folder)</b></p>
+            <p>Please check your email for a verification link. (Haven't got the link check your spam folder)</p>
             {message && <p className="success-msg">{message}</p>}
             {error && <p className="error-msg">{error}</p>}
             <button onClick={handleResend}>Resend Verification Email</button>
